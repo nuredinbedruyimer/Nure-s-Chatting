@@ -17,7 +17,17 @@ const AuthForm = () => {
     const session = useSession();
   const router = useRouter();
     const [variant, setVariant] = useState<Variant>('REGISTER');
-    const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  
+
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      router.push('/users')
+    
+  }
+},[session?.status,router])
+
+
     const changeVariant = useCallback(() => {
         if (variant === 'LOGIN') {
              setVariant('REGISTER');
